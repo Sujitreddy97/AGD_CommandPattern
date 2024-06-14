@@ -1,6 +1,6 @@
-namespace Command.Actions
+namespace Command.Command
 {
-    public enum ActionType
+    public enum CommandType
     {
         None,
         Attack,
@@ -12,3 +12,5 @@ namespace Command.Actions
         ThirdEye
     }
 }
+
+

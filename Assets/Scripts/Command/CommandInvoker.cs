@@ -1,18 +1,20 @@
-using System.Collections;
+using Command.Main;
 using System.Collections.Generic;
-using System.Windows.Input;
 
-public class CommandInvoker
+namespace Command.Command
 {
-    private Stack<ICommand> commandRegistry = new Stack<ICommand>();
-
-    public void ProcessCommand(ICommand commandToProcess)
+    public class CommandInvoker
     {
-        ExecuteCommand(commandToProcess);
-        RegisterCommand(commandToProcess);
+        private Stack<ICommand> commandRegistry = new Stack<ICommand>();
+
+        public void ProcessCommand(ICommand commandToProcess)
+        {
+            ExecuteCommand(commandToProcess);
+            RegisterCommand(commandToProcess);
+        }
+
+        public void ExecuteCommand(ICommand commandToExecute) => commandToExecute.Execute();
+
+        public void RegisterCommand(ICommand commandToRegister) => commandRegistry.Push(commandToRegister);
     }
-
-    public void ExecuteCommand(ICommand commandToExecute) => commandToExecute.Execute(commandToExecute);
-
-    public void RegisterCommand(ICommand commandToRegister) => commandRegistry.Push(commandToRegister);
 }
