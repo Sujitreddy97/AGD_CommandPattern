@@ -1,9 +1,9 @@
 using UnityEngine;
 using Command.Main;
-using Command.Command;
 using System.Collections;
 using System;
 using Object = UnityEngine.Object;
+using Command.Command;
 
 namespace Command.Player
 {
@@ -147,7 +147,11 @@ namespace Command.Player
 
         public void ResetStats() => CurrentPower = unitScriptableObject.Power;
 
-        public void Revive() => SetAliveState(UnitAliveState.ALIVE);
+        public void Revive()
+        {
+            SetAliveState(UnitAliveState.ALIVE);
+            unitView.PlayAnimation(UnitAnimations.IDLE);
+        }
 
         public void Destroy() => UnityEngine.Object.Destroy(unitView.gameObject);
 
