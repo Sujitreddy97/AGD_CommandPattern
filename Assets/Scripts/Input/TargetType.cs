@@ -1,4 +1,4 @@
-namespace Command.Input
+﻿namespace Command.Input
 {
     public enum TargetType
     {
